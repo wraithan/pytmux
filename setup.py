@@ -11,7 +11,6 @@ except ImportError:
     from distutils.core import setup
 
 
-
 if sys.argv[-1] == "publish":
     os.system("python setup.py sdist upload")
     sys.exit()
@@ -26,7 +25,7 @@ setup(
     author='Wraithan (Chris McDonald)',
     author_email='xwraithanx@gmail.com',
     url='https://github.com/wraithan/pytmux',
-    packages= ['pytmux'],
+    packages=['pytmux'],
     install_requires=required,
     license='Apache License, Version 2.0',
     classifiers=(
