@@ -16,6 +16,9 @@ To run it::
 
   pytmux run <config>
 
+To list all configs::
+
+  pytmux list
 
 Configs
 -------
