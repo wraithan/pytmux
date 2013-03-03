@@ -1,7 +1,13 @@
 pytmux
 ======
 
-*Note*: This README is what I'd like to have implemented. Until this notice
+This is a simple wrapper around tmux to allow you to define a session in a JSON
+file. This is to avoid having to do all the setup of making the session with a
+name, opening the windows with the right names and commands, and doing so in a
+consistent manner. Also, if the session already exists, it will just open it
+for you.
+
+**Note**: This README is what I'd like to have implemented. Until this notice
 goes away assume that if any of these commands work you are lucky, if they
 don't, hopefully they will soon.
 
@@ -39,12 +45,12 @@ JSON will be used for configs::
       ]
   }
 
-Will open a tmux session named ``sample`` with 4 windows open. The first will be
-named ``dev server`` and will have ``./manage.py runserver`` running in it. The
-second will be a window named ``some shell`` which will have the system default
-shell running in it. The third will default to using ``automatic-rename`` and
-will have ``emacs`` running in it. The final will be a window with
-``automatic-rename`` and the system default shell.
+Will open a tmux session named ``sample`` with 4 windows open. The first will
+be named ``dev server`` and will have ``./manage.py runserver`` running in
+it. The second will be a window named ``some shell`` which will have the system
+default shell running in it. The third will default to using
+``automatic-rename`` and will have ``emacs`` running in it. The final will be a
+window with ``automatic-rename`` and the system default shell.
 
 Why
 ---
