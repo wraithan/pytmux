@@ -23,7 +23,7 @@ from docopt import docopt
 from __init__ import __version__
 from core import edit_config, list_configs, run_config
 
-if __name__ == '__main__':
+def main():
     arguments = docopt(__doc__, version='pytmux {}'.format(__version__))
 
     if arguments['list']:
