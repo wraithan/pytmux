@@ -38,7 +38,7 @@ setup(
     ),
     entry_points={
         'console_scripts': [
-           'pytmux = pytmux.cli:main',
+            'pytmux = pytmux.cli:main',
         ],
     },
 )

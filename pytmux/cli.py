@@ -18,13 +18,19 @@ Options:
   --version       Show version.
 
 """
+from os import mkdir, path
+
 from docopt import docopt
 
 from __init__ import __version__
-from core import edit_config, list_configs, run_config
+from core import config_dir, edit_config, list_configs, run_config
+
 
 def main():
     arguments = docopt(__doc__, version='pytmux {}'.format(__version__))
+
+    if not path.exists(config_dir):
+        mkdir(config_dir)
 
     if arguments['list']:
         list_configs()
