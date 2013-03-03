@@ -58,3 +58,11 @@ Why
 Honestly, I don't want to build this, but none of the currently existing tmux
 wrappers seem interested in supporting not naming windows and letting tmux do
 its ``automatic-rename` thing. Also they use YAML and I prefer JSON.
+
+Prior Art
+---------
+
+There are a couple that exist already but don't make me happy.
+
+- `tmuxinator <https://github.com/aziz/tmuxinator>`_
+- `teamocil <https://github.com/remiprev/teamocil>`_
