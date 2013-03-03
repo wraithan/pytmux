@@ -16,7 +16,7 @@ if sys.argv[-1] == "publish":
     os.system("python setup.py sdist upload")
     sys.exit()
 
-required = []
+required = ['docopt==0.6.1']
 
 setup(
     name='pytmux',
