@@ -11,7 +11,7 @@ Code Standards
 --------------
 
 All code should pass ``pep8`` and ``pyflakes``. A simple tool for checking is
-`flake8 <https://pypi.python.org/pypi/flake8>`. You should be able to run::
+`flake8 <https://pypi.python.org/pypi/flake8>`_. You should be able to run::
 
   flake8 .
 
