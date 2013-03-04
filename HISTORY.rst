@@ -3,6 +3,11 @@
 History
 =======
 
+0.0.3 (2013-03-04)
+------------------
+
+- Edit has a default config that it will add if you are making a new file.
+
 0.0.2 (2013-03-03)
 ------------------
 

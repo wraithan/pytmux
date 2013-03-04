@@ -2,10 +2,26 @@ import json
 import os
 import shutil
 import subprocess
+from collections import OrderedDict
 
 import envoy
 
 config_dir = os.path.expanduser('~/.pytmux/')
+
+
+base_config = OrderedDict([
+    ('name', 'example'),
+    ('windows', [
+        OrderedDict([
+            ('name', 'editor'),
+            ('command', 'emacs'),
+        ]), {
+            'name': 'default shell',
+        }, {
+            'command': 'redis-cli MONITOR',
+        }, {}
+    ])
+])
 
 
 def get_config_path(filename):
@@ -77,4 +93,7 @@ def edit_config(config, copy, other_config):
     if copy and other_config:
         file_to_copy = get_config_path(other_config)
         shutil.copyfile(file_to_copy, filename)
+    elif not os.path.exists(filename):
+        with open(filename, 'w') as f:
+            f.write(json.dumps(base_config, indent=2))
     subprocess.call('{0} {1}'.format(editor, filename), shell=True)
