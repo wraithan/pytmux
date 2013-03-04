@@ -37,5 +37,5 @@ def main():
     elif arguments['run']:
         run_config(arguments['config'])
     elif arguments['edit']:
-        edit_config(arguments['config'], arguments['copy'],
-                    arguments['other_config'])
+        edit_config(arguments['<config>'], arguments['--copy'],
+                    arguments['<other_config>'])
