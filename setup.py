@@ -24,7 +24,8 @@ setup(
     name='pytmux',
     version=pytmux.__version__,
     description='A simple wrapper for tmux.',
-    long_description=open('README.rst').read(),
+    long_description=(open('README.rst').read() + '\n\n' +
+                      open('HISTORY.rst').read()),
     author='Wraithan (Chris McDonald)',
     author_email='xwraithanx@gmail.com',
     url='https://github.com/wraithan/pytmux',
