@@ -18,7 +18,7 @@ Options:
   --version       Show version.
 
 """
-from os import mkdir, path
+from os import makedirs, path
 
 from docopt import docopt
 
@@ -30,12 +30,12 @@ def main():
     arguments = docopt(__doc__, version='pytmux {}'.format(__version__))
 
     if not path.exists(config_dir):
-        mkdir(config_dir)
+        makedirs(config_dir)
 
     if arguments['list']:
         list_configs()
     elif arguments['run']:
-        run_config(arguments['config'])
+        run_config(arguments['<config>'])
     elif arguments['edit']:
         edit_config(arguments['<config>'], arguments['--copy'],
                     arguments['<other_config>'])
