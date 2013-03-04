@@ -7,10 +7,6 @@ name, opening the windows with the right names and commands, and doing so in a
 consistent manner. Also, if the session already exists, it will just open it
 for you.
 
-**Note**: This README is what I'd like to have implemented. Until this notice
-goes away assume that if any of these commands work you are lucky, if they
-don't, hopefully they will soon.
-
 Usage
 -----
 

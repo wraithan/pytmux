@@ -24,7 +24,14 @@ def list_configs():
 
 
 def run_config(config):
-    settings = json.load(open(get_config_path(config)))
+    try:
+        settings = json.load(open(get_config_path(config)))
+    except IOError, e:
+        print '{}: "{}"'.format(e.strerror, e.filename)
+        return
+    except ValueError, e:
+        print 'JSON in "{}" is not valid'.format(get_config_path(config))
+        return
     retcode = tmux('has-session', '-t', settings['name'],
                    stderr=subprocess.PIPE)
 
