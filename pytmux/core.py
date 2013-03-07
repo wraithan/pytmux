@@ -2,34 +2,11 @@ import json
 import os
 import shutil
 import subprocess
-from collections import OrderedDict
 
 import envoy
 
-config_dir = os.path.expanduser('~/.pytmux/')
-
-
-base_config = OrderedDict([
-    ('name', 'example'),
-    ('windows', [
-        OrderedDict([
-            ('name', 'editor'),
-            ('command', 'emacs'),
-        ]), {
-            'name': 'default shell',
-        }, {
-            'command': 'redis-cli MONITOR',
-        }, {}
-    ])
-])
-
-
-def get_config_path(filename):
-    return os.path.join(config_dir, '{}.json'.format(filename))
-
-
-def tmux(*args, **kwargs):
-    return subprocess.call(('tmux',)+args, **kwargs)
+from schema import validate_config
+from utils import base_config, config_dir, get_config_path, tmux
 
 
 def list_configs():
@@ -97,3 +74,10 @@ def edit_config(config, copy, other_config):
         with open(filename, 'w') as f:
             f.write(json.dumps(base_config, indent=2))
     subprocess.call('{0} {1}'.format(editor, filename), shell=True)
+
+
+def doctor_command():
+    configs = [os.path.splitext(fn)[0] for fn in os.listdir(config_dir)
+               if os.path.splitext(fn)[1] == '.json']
+    for conf in configs:
+        validate_config(conf)

@@ -10,17 +10,21 @@ for you.
 Usage
 -----
 
+To list all configs::
+
+  pytmux list
+
+To run a config::
+
+  pytmux run <config>
+
 To start a new configuration or edit an existing one::
 
   pytmux edit <config>
 
-To run it::
+To validate all of your configs::
 
-  pytmux run <config>
-
-To list all configs::
-
-  pytmux list
+  pytmux doctor
 
 Configs
 -------
