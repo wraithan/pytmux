@@ -55,7 +55,7 @@ def run_config(config):
 
             if 'command' in window:
                 tmux('send-keys',
-                     '-t', '{}:{}'.format(settings['name'], index),
+                     '-t', '{}:{}.'.format(settings['name'], index),
                      window['command'], '^M')
 
     if env:
