@@ -7,6 +7,17 @@ name, opening the windows with the right names and commands, and doing so in a
 consistent manner. Also, if the session already exists, it will just open it
 for you.
 
+Installation
+------------
+
+Simply install it from pypi::
+
+  pip install pytmux
+
+or if you insist::
+
+  easy_install pytmux
+
 Usage
 -----
 
