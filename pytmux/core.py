@@ -49,7 +49,7 @@ def run_config(config):
             if 'name' in window:
                 name = ('-n', window['name'])
 
-            tmux('new-window', '-d', '-k', '-t'
+            tmux('new-window', '-d', '-k', '-t',
                  '{}:{}'.format(settings['name'], index),
                  *name)
 

@@ -3,6 +3,12 @@
 History
 =======
 
+0.0.5 (2013-03-06)
+------------------
+
+- Added jsonschema to the requirements because I forgot it (thanks Andy McKay).
+- Added missing comma in core.py
+
 0.0.4 (2013-03-06)
 ------------------
 
