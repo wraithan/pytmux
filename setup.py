@@ -18,6 +18,7 @@ if sys.argv[-1] == "publish":
 required = [
     'docopt==0.6.1',
     'envoy==0.0.2',
+    'jsonschema==1.1.0',
 ]
 
 setup(
