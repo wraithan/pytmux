@@ -6,7 +6,7 @@ import subprocess
 import envoy
 
 from schema import validate_config
-from utils import base_config, config_dir, get_config_path, tmux
+from utils import base_config, config_dir, get_config_path, Tmux
 
 
 def list_configs():
@@ -25,43 +25,27 @@ def run_config(config):
     except ValueError, e:
         print 'JSON in "{}" is not valid'.format(get_config_path(config))
         return
-    retcode = tmux('has-session', '-t', settings['name'],
-                   stderr=subprocess.PIPE)
 
-    env = os.environ.get('TMUX')
+    tmux = Tmux(settings['name'], settings.get('socket'))
+
+    make_session = tmux.call('has-session', '-t', settings['name'],
+                             stderr=subprocess.PIPE)
 
     base_index = envoy.run('tmux show-options -g base-index').std_out or 0
     if base_index:
         base_index = int(base_index.strip()[-1])
 
-    if retcode:
-        # Work around bug in tmux where it wont let you start another session
-        # from inside of a session.
-        if env:
-            del os.environ['TMUX']
-        tmux('new-session', '-s', settings['name'], '-d')
-        if env:
-            os.environ['TMUX'] = env
+    if make_session:
+        tmux.create()
 
         # Create windows
         for index, window in enumerate(settings['windows'], base_index):
-            name = ()
-            if 'name' in window:
-                name = ('-n', window['name'])
-
-            tmux('new-window', '-d', '-k', '-t',
-                 '{}:{}'.format(settings['name'], index),
-                 *name)
-
+            tmux.new_window(index, window.get('name'))
             if 'command' in window:
-                tmux('send-keys',
-                     '-t', '{}:{}.'.format(settings['name'], index),
-                     window['command'], '^M')
+                tmux.send_keys(index, window['command'])
 
-    if env:
-        tmux('switch', '-t', settings['name'])
-    else:
-        tmux('attach-session', '-t', settings['name'])
+    tmux.attach()
+
 
 
 def edit_config(config, copy, other_config):

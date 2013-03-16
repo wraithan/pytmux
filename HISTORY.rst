@@ -3,6 +3,11 @@
 History
 =======
 
+0.0.7 (2013-03-15)
+------------------
+
+- Rewrote the tmux calling code to be a little less verbose.
+
 0.0.6 (2013-03-07)
 ------------------
 
