@@ -26,12 +26,12 @@ def get_config_path(filename):
 
 
 class Tmux(object):
-    def __init__(self, session=None):
+    def __init__(self, session=None, directory=None):
         self.session = session
+        self.directory = directory
 
     def call(self, *args, **kwargs):
         command = ('tmux',)
-        print command+args
         return subprocess.call(command+args, **kwargs)
 
     def create(self):
@@ -46,6 +46,9 @@ class Tmux(object):
         if env:
             os.environ['TMUX'] = env
 
+        if self.directory:
+            self.set_option('default-path', self.directory)
+
     def send_keys(self, window, command):
         return self.call('send-keys',
                          '-t', '{}:{}.'.format(self.session, window),
@@ -58,10 +61,15 @@ class Tmux(object):
             self.call('attach-session', '-t', self.session)
 
     def new_window(self, number, name):
-        name_arg = ()
+        extra_args = ()
+        if self.directory is not None:
+            extra_args += ('-c', self.directory)
         if name:
-            name_arg = ('-n', name)
+            extra_args += ('-n', name)
 
         self.call('new-window', '-d', '-k',
                   '-t', '{}:{}'.format(self.session, number),
-                  *name_arg)
+                  *extra_args)
+
+    def set_option(self, option, value):
+        self.call('set-option', '-q', '-t', self.session, option, value)

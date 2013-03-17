@@ -26,7 +26,7 @@ def run_config(config):
         print 'JSON in "{}" is not valid'.format(get_config_path(config))
         return
 
-    tmux = Tmux(settings['name'])
+    tmux = Tmux(settings['name'], settings.get('directory'))
 
     make_session = tmux.call('has-session', '-t', settings['name'],
                              stderr=subprocess.PIPE)

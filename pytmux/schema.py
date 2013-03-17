@@ -11,6 +11,9 @@ schema = {
         'name': {
             'type': 'string',
             'required': True
+        }, 'directory': {
+            'type': 'string',
+            'required': False
         },
         'windows': {
             'type': 'array',
