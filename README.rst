@@ -44,6 +44,7 @@ JSON will be used for configs::
 
   {
       "name": "sample",
+      "directory": "~/devel/sample",
       "windows": [
           {
               "name": "dev server",
