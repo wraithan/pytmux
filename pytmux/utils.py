@@ -26,7 +26,7 @@ def get_config_path(filename):
 
 
 class Tmux(object):
-    def __init__(self, session=None, socket=None):
+    def __init__(self, session=None):
         self.session = session
 
     def call(self, *args, **kwargs):
