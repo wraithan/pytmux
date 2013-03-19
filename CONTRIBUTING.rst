@@ -19,3 +19,12 @@ At the root of the repository and have 0 errors or warnings. That said,
 everyone slips now and then, and one or two isn't a big deal and I'll just fix
 them myself. But if your whole patch fails then I'll likely reject it until you
 clean up your code.
+
+Reporting Issues
+----------------
+
+You can report issues and feature via the `issue tracker
+<https://github.com/wraithan/pytmux/issues>`_. If you have an issue please give
+full steps to reproduce (such as a config file that has the problem). If you
+have a feature you'd like, please provide as much information as possible (such
+as what flags in tmux the feature uses or how exactly you'd like it to work.)
