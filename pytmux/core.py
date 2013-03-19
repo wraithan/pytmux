@@ -47,7 +47,6 @@ def run_config(config):
     tmux.attach()
 
 
-
 def edit_config(config, copy, other_config):
     editor = os.environ.get('EDITOR', 'vi')
     filename = get_config_path(config)
