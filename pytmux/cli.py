@@ -24,8 +24,8 @@ from os import makedirs, path
 
 from docopt import docopt
 
-from __init__ import __version__
-from core import (config_dir, doctor_command, edit_config, list_configs,
+from .__init__ import __version__
+from .core import (config_dir, doctor_command, edit_config, list_configs,
                   run_config)
 
 

@@ -17,7 +17,6 @@ if sys.argv[-1] == "publish":
 
 required = [
     'docopt==0.6.1',
-    'envoy==0.0.2',
     'jsonschema==1.1.0',
 ]
 
@@ -34,12 +33,18 @@ setup(
     install_requires=required,
     license='Apache License, Version 2.0',
     classifiers=(
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
+        'Environment :: Console',
         'Intended Audience :: Developers',
-        'Natural Language :: English',
         'License :: OSI Approved :: Apache Software License',
+        'Natural Language :: English',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Topic :: Terminals',
+        'Topic :: Utilities',
     ),
     entry_points={
         'console_scripts': [

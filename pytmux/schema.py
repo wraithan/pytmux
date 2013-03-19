@@ -1,6 +1,9 @@
+from __future__ import print_function
+
 import json
 from jsonschema import Draft3Validator
-from utils import get_config_path
+
+from .utils import get_config_path
 
 
 schema = {
@@ -41,11 +44,11 @@ def validate_config(config):
     filename = get_config_path(config)
     try:
         to_validate = json.load(open(filename))
-    except ValueError, e:
-        print '{}: {}'.format(filename, e)
+    except ValueError as e:
+        print('{}: {}'.format(filename, e))
         return
 
     validator = Draft3Validator(schema)
 
     for error in sorted(validator.iter_errors(to_validate), key=str):
-        print '{}: {}'.format(filename, error)
+        print('{}: {}'.format(filename, error))

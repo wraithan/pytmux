@@ -1,29 +1,29 @@
+from __future__ import print_function
+
 import json
 import os
 import shutil
 import subprocess
 
-import envoy
-
-from schema import validate_config
-from utils import base_config, config_dir, get_config_path, Tmux
+from .schema import validate_config
+from .utils import base_config, config_dir, get_config_path, Tmux
 
 
 def list_configs():
     configs = [os.path.splitext(fn)[0] for fn in os.listdir(config_dir)
                if os.path.splitext(fn)[1] == '.json']
-    print 'Configs:'
-    print '\n'.join(configs)
+    print('Configs:')
+    print('\n'.join(configs))
 
 
 def run_config(config):
     try:
         settings = json.load(open(get_config_path(config)))
-    except IOError, e:
-        print '{}: "{}"'.format(e.strerror, e.filename)
+    except IOError as e:
+        print('{}: "{}"'.format(e.strerror, e.filename))
         return
-    except ValueError, e:
-        print 'JSON in "{}" is not valid'.format(get_config_path(config))
+    except ValueError as e:
+        print('JSON in "{}" is not valid'.format(get_config_path(config)))
         return
 
     tmux = Tmux(settings['name'], settings.get('directory'))
@@ -31,9 +31,11 @@ def run_config(config):
     make_session = tmux.call('has-session', '-t', settings['name'],
                              stderr=subprocess.PIPE)
 
-    base_index = envoy.run('tmux show-options -g base-index').std_out or 0
+    base_index = subprocess.Popen('tmux show-options -g base-index', shell=True,
+                                  stdout=subprocess.PIPE).communicate() or 0
+
     if base_index:
-        base_index = int(base_index.strip()[-1])
+        base_index = int(base_index[0].decode('ascii').strip()[-1])
 
     if make_session:
         tmux.create()
