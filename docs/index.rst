@@ -6,6 +6,11 @@
 Welcome to pytmux's documentation!
 ==================================
 
+pytmux is a light wrapper around tmux_. You define a session using a json file
+and it tries to create it. For more information see below:
+
+.. _tmux: http://tmux.sourceforge.net/
+
 Contents:
 
 .. toctree::
