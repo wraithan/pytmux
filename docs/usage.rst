@@ -2,7 +2,7 @@ Usage
 =====
 
 pytmux tries to keep to the `principle of least astonishment`_, much like
-Python. If a command or configuration option is immediately obvious, please open
+Python. If a command or configuration option isn't immediately obvious, please open
 an issue and we can talk about how to improve the situation.
 
 Commands
